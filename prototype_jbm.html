@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT Jamkrida Bali Mandara (Perseroda) — The SME's Solution</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════ */
+:root {
+  --navy:       #0F1F3D;
+  --navy-mid:   #1B2A4A;
+  --navy-light: #2D4268;
+  --blue:       #1A5FDB;
+  --blue-light: #3B7FED;
+  --teal:       #0B8A5E;
+  --teal-light: #12B07A;
+  --amber:      #D97706;
+  --red:        #C0392B;
+  --white:      #FFFFFF;
+  --off-white:  #F7F8FC;
+  --light:      #EEF1F8;
+  --text:       #1A2035;
+  --muted:      #5A6478;
+  --border:     #D8DDE8;
+  --gold:       #C8A84B;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-sm: 0 1px 4px rgba(15,31,61,0.06), 0 2px 8px rgba(15,31,61,0.04);
+  --shadow-md: 0 4px 16px rgba(15,31,61,0.10), 0 2px 6px rgba(15,31,61,0.06);
+  --shadow-lg: 0 12px 40px rgba(15,31,61,0.14), 0 4px 12px rgba(15,31,61,0.08);
+}
+
+/* ═══════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: var(--font-body); cursor: pointer; border: none; }
+
+/* ═══════════════════════════════════════
+   UTILITY
+═══════════════════════════════════════ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.tag {
+  display: inline-block; font-size: 11px; font-weight: 600;
+  padding: 3px 10px; border-radius: 99px; letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.tag-blue  { background: #DBEAFE; color: #1D4ED8; }
+.tag-teal  { background: #D1FAE5; color: #065F46; }
+.tag-amber { background: #FEF3C7; color: #92400E; }
+.tag-red   { background: #FEE2E2; color: #991B1B; }
+.tag-gold  { background: #FEF9EE; color: #92610A; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: var(--radius-md);
+  font-size: 14px; font-weight: 600; transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--blue); color: var(--white);
+  box-shadow: 0 4px 14px rgba(26,95,219,0.30);
+}
+.btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,95,219,0.40); }
+.btn-outline {
+  background: transparent; color: var(--navy);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--navy); background: var(--off-white); }
+.btn-white {
+  background: var(--white); color: var(--navy);
+  box-shadow: var(--shadow-md);
+}
+.btn-white:hover { transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+.btn-ghost-white {
+  background: rgba(255,255,255,0.12); color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.30);
+  backdrop-filter: blur(8px);
+}
+.btn-ghost-white:hover { background: rgba(255,255,255,0.22); }
+
+.section-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--blue);
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::before {
+  content: ''; display: block; width: 24px; height: 2px;
+  background: var(--blue); flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════
+   TOP UTILITY BAR
+═══════════════════════════════════════ */
+.utility-bar {
+  background: var(--navy);
+  padding: 7px 0;
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+}
+.utility-bar .container {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.utility-bar a { color: rgba(255,255,255,0.65); transition: color 0.2s; }
+.utility-bar a:hover { color: #fff; }
+.utility-contacts { display: flex; align-items: center; gap: 20px; }
+.utility-contacts span { display: flex; align-items: center; gap: 5px; }
+.utility-right { display: flex; align-items: center; gap: 16px; }
+.lang-toggle {
+  display: flex; gap: 2px; background: rgba(255,255,255,0.1); border-radius: 4px; padding: 2px;
+}
+.lang-toggle button {
+  padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,0.65); background: transparent; transition: all 0.2s;
+}
+.lang-toggle button.active { background: var(--blue); color: #fff; }
+.social-icons { display: flex; gap: 10px; }
+.social-icons a {
+  width: 22px; height: 22px; border-radius: 4px;
+  background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: rgba(255,255,255,0.65); transition: all 0.2s;
+}
+.social-icons a:hover { background: var(--blue); color: #fff; }
+
+/* ═══════════════════════════════════════
+   HEADER / NAV
+═══════════════════════════════════════ */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner {
+  display: flex; align-items: center; gap: 0;
+  height: 68px;
+}
+.logo-wrap {
+  display: flex; align-items: center; gap: 12px;
+  margin-right: 36px; flex-shrink: 0;
+}
+.logo-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 18px; color: #fff; font-weight: 700;
+  letter-spacing: -1px;
+}
+.logo-text { line-height: 1.2; }
+.logo-text .name { font-size: 14px; font-weight: 600; color: var(--navy); }
+.logo-text .tagline { font-size: 10px; color: var(--muted); letter-spacing: 0.04em; }
+
+.main-nav { display: flex; align-items: center; gap: 2px; flex: 1; }
+.nav-item {
+  position: relative;
+}
+.nav-link {
+  display: flex; align-items: center; gap: 5px;
+  padding: 8px 14px; border-radius: var(--radius-sm);
+  font-size: 13.5px; font-weight: 500; color: var(--text);
+  transition: all 0.15s; cursor: pointer; white-space: nowrap;
+}
+.nav-link:hover, .nav-link.active { color: var(--blue); background: #EEF3FF; }
+.nav-link svg { width: 12px; height: 12px; flex-shrink: 0; opacity: 0.5; }
+
+.dropdown {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  min-width: 220px; padding: 8px;
+  opacity: 0; visibility: hidden; transform: translateY(-8px);
+  transition: all 0.2s ease; pointer-events: none; z-index: 200;
+}
+.nav-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: all; }
+.dropdown a {
+  display: block; padding: 9px 12px; border-radius: var(--radius-sm);
+  font-size: 13.5px; color: var(--text); transition: all 0.15s;
+}
+.dropdown a:hover { background: #EEF3FF; color: var(--blue); padding-left: 16px; }
+.dropdown-group { margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border); }
+.dropdown-group:first-child { margin-top: 0; padding-top: 0; border: none; }
+.dropdown-group-label {
+  font-size: 10px; font-weight: 600; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 6px 12px 4px;
+}
+
+.nav-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
+.search-btn {
+  width: 36px; height: 36px; border-radius: var(--radius-sm);
+  background: var(--off-white); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); transition: all 0.2s;
+}
+.search-btn:hover { background: #EEF3FF; color: var(--blue); border-color: var(--blue); }
+
+/* ═══════════════════════════════════════
+   HERO SECTION
+═══════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 88vh;
+  background: var(--navy);
+  display: flex; align-items: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26,95,219,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 10% 80%, rgba(11,138,94,0.12) 0%, transparent 60%),
+    linear-gradient(135deg, #0A1628 0%, #0F1F3D 50%, #131D35 100%);
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(60px); pointer-events: none;
+}
+.hero-orb-1 { width: 500px; height: 500px; background: rgba(26,95,219,0.12); right: -100px; top: -100px; }
+.hero-orb-2 { width: 300px; height: 300px; background: rgba(11,138,94,0.10); left: 10%; bottom: -50px; }
+
+.hero .container {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 420px;
+  gap: 60px; align-items: center;
+  padding-top: 60px; padding-bottom: 60px;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(26,95,219,0.15); border: 1px solid rgba(26,95,219,0.30);
+  border-radius: 99px; padding: 6px 14px; margin-bottom: 28px;
+  font-size: 12px; font-weight: 500; color: #93C5FD;
+}
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #60A5FA; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 700; line-height: 1.15;
+  color: #fff; margin-bottom: 20px;
+}
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero p {
+  font-size: 17px; color: rgba(255,255,255,0.65);
+  line-height: 1.75; max-width: 480px; margin-bottom: 36px;
+}
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+.hero-stats {
+  display: flex; gap: 32px;
+  border-top: 1px solid rgba(255,255,255,0.10); padding-top: 32px;
+}
+.hero-stat .num {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 700; color: #fff;
+  line-height: 1;
+}
+.hero-stat .num span { font-size: 16px; color: var(--gold); }
+.hero-stat .lbl { font-size: 12px; color: rgba(255,255,255,0.50); margin-top: 4px; }
+
+/* Hero Right Card */
+.hero-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-xl);
+  padding: 28px; backdrop-filter: blur(16px);
+}
+.hero-card-title {
+  font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.50);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;
+}
+.calc-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 6px; font-weight: 500; }
+.calc-select, .calc-input {
+  width: 100%; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-sm);
+  padding: 10px 14px; font-size: 14px; color: #fff; font-family: var(--font-body);
+  margin-bottom: 14px; outline: none; transition: border-color 0.2s;
+}
+.calc-select:focus, .calc-input:focus { border-color: var(--blue-light); }
+.calc-select option { background: var(--navy); }
+.calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.calc-result {
+  background: rgba(26,95,219,0.20); border: 1px solid rgba(26,95,219,0.30);
+  border-radius: var(--radius-md); padding: 14px 16px; margin: 4px 0 16px;
+}
+.calc-result .result-label { font-size: 11px; color: #93C5FD; font-weight: 500; margin-bottom: 4px; }
+.calc-result .result-value { font-family: var(--font-display); font-size: 24px; color: #fff; font-weight: 700; }
+.calc-result .result-sub { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+.calc-btn {
+  width: 100%; padding: 12px; background: var(--blue);
+  color: #fff; border-radius: var(--radius-md); font-size: 14px; font-weight: 600;
+  cursor: pointer; border: none; transition: all 0.2s; font-family: var(--font-body);
+  box-shadow: 0 4px 14px rgba(26,95,219,0.40);
+}
+.calc-btn:hover { background: var(--blue-light); transform: translateY(-1px); }
+.calc-note { font-size: 10.5px; color: rgba(255,255,255,0.35); text-align: center; margin-top: 8px; line-height: 1.5; }
+
+/* ═══════════════════════════════════════
+   METRICS STRIP
+═══════════════════════════════════════ */
+.metrics-strip {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0;
+}
+.metrics-inner {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.metric-item {
+  text-align: center; padding: 0 24px;
+  border-right: 1px solid var(--border);
+}
+.metric-item:last-child { border-right: none; }
+.metric-num {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 700; color: var(--navy);
+  line-height: 1;
+}
+.metric-num sup { font-size: 16px; color: var(--blue); }
+.metric-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; font-weight: 500; }
+.metric-sub { font-size: 11px; color: var(--teal); margin-top: 2px; font-weight: 600; }
+
+/* ═══════════════════════════════════════
+   PRODUCTS SECTION
+═══════════════════════════════════════ */
+.products { padding: 90px 0; background: var(--off-white); }
+.section-header { margin-bottom: 52px; }
+.section-header .section-label { margin-bottom: 12px; }
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700; color: var(--navy); line-height: 1.2;
+  margin-bottom: 14px;
+}
+.section-header p { font-size: 16px; color: var(--muted); max-width: 540px; }
+.section-header-row {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+}
+
+.products-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.product-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px;
+  transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden;
+}
+.product-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease;
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.product-card:hover::before { transform: scaleX(1); }
+.product-icon {
+  width: 52px; height: 52px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px; font-size: 24px;
+}
+.product-card h3 { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+.product-card p { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+.product-card .tag { margin-bottom: 14px; }
+.product-link {
+  display: flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600;
+  color: var(--blue); transition: gap 0.2s;
+}
+.product-card:hover .product-link { gap: 10px; }
+.product-link svg { width: 16px; height: 16px; }
+.product-highlight {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  color: #fff; border: none;
+}
+.product-highlight::before { background: linear-gradient(90deg, var(--gold), var(--amber)); }
+.product-highlight h3 { color: #fff; }
+.product-highlight p { color: rgba(255,255,255,0.65); }
+.product-highlight .product-link { color: var(--gold); }
+
+/* ═══════════════════════════════════════
+   VALUE PROPOSITION
+═══════════════════════════════════════ */
+.value-prop { padding: 90px 0; background: var(--white); }
+.value-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.value-text .section-label { margin-bottom: 16px; }
+.value-text h2 {
+  font-family: var(--font-display); font-size: clamp(28px, 3vw, 40px);
+  font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 20px;
+}
+.value-text > p { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 36px; }
+.value-features { display: flex; flex-direction: column; gap: 20px; }
+.value-feature {
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.feature-icon {
+  width: 44px; height: 44px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0; margin-top: 2px;
+}
+.feature-icon.blue { background: #DBEAFE; }
+.feature-icon.teal { background: #D1FAE5; }
+.feature-icon.amber { background: #FEF3C7; }
+.feature-icon.navy { background: #EEF3FF; }
+.feature-text h4 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.feature-text p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+.value-visual {
+  position: relative;
+}
+.value-map {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius: var(--radius-xl); padding: 36px;
+  position: relative; overflow: hidden;
+}
+.map-grid {
+  position: absolute; inset: 0; opacity: 0.05;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.map-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.50); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px; position: relative; }
+.coverage-stat {
+  position: relative; display: flex; gap: 16px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: var(--radius-md); padding: 16px; margin-bottom: 12px;
+  align-items: center;
+}
+.coverage-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.coverage-info .region { font-size: 13px; font-weight: 600; color: #fff; }
+.coverage-info .count { font-size: 12px; color: rgba(255,255,255,0.50); margin-top: 2px; }
+.coverage-bar-wrap { flex: 1; }
+.coverage-bar {
+  height: 4px; background: rgba(255,255,255,0.10); border-radius: 99px; overflow: hidden;
+}
+.coverage-bar-fill { height: 100%; border-radius: 99px; }
+
+/* ═══════════════════════════════════════
+   TRANSPARENCY / KETERBUKAAN
+═══════════════════════════════════════ */
+.transparency { padding: 90px 0; background: var(--navy); }
+.transparency .section-label { color: #93C5FD; }
+.transparency .section-label::before { background: #93C5FD; }
+.transparency h2 {
+  font-family: var(--font-display); font-size: clamp(28px, 3vw, 40px);
+  color: #fff; font-weight: 700; line-height: 1.2; margin-bottom: 14px;
+}
+.transparency > .container > p { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 52px; max-width: 560px; }
+
+.transparency-tabs {
+  display: flex; gap: 4px; margin-bottom: 28px;
+  background: rgba(255,255,255,0.06); border-radius: var(--radius-md);
+  padding: 4px; width: fit-content;
+}
+.trans-tab {
+  padding: 8px 18px; border-radius: var(--radius-sm); font-size: 13.5px;
+  font-weight: 500; color: rgba(255,255,255,0.55); background: transparent;
+  border: none; cursor: pointer; transition: all 0.2s; font-family: var(--font-body);
+}
+.trans-tab.active { background: var(--blue); color: #fff; }
+.trans-tab:hover:not(.active) { color: #fff; }
+
+.docs-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+.doc-card {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius-md); padding: 16px 20px;
+  display: flex; align-items: center; gap: 14px;
+  transition: all 0.2s; cursor: pointer;
+}
+.doc-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.18); transform: translateX(4px); }
+.doc-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.doc-icon.pdf { background: rgba(239,68,68,0.15); }
+.doc-icon.xlsx { background: rgba(34,197,94,0.15); }
+.doc-info { flex: 1; min-width: 0; }
+.doc-name { font-size: 13.5px; font-weight: 500; color: #fff; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.doc-meta { font-size: 11px; color: rgba(255,255,255,0.40); display: flex; gap: 12px; }
+.doc-status { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 99px; flex-shrink: 0; }
+.doc-status.available { background: rgba(34,197,94,0.15); color: #4ADE80; }
+.doc-status.pending { background: rgba(251,191,36,0.15); color: #FCD34D; }
+
+.trans-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.trans-note { font-size: 13px; color: rgba(255,255,255,0.40); }
+.trans-note strong { color: rgba(255,255,255,0.70); }
+.ppid-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  font-size: 13.5px; font-weight: 500; color: #fff; cursor: pointer;
+  transition: all 0.2s; font-family: var(--font-body);
+}
+.ppid-btn:hover { background: rgba(255,255,255,0.15); }
+
+/* ═══════════════════════════════════════
+   NEWS SECTION
+═══════════════════════════════════════ */
+.news { padding: 90px 0; background: var(--off-white); }
+.news-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.news-card {
+  background: #fff; border-radius: var(--radius-lg);
+  border: 1px solid var(--border); overflow: hidden;
+  transition: all 0.3s ease;
+}
+.news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.news-thumb {
+  height: 190px; background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+  position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+}
+.news-thumb-inner {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  font-size: 48px; opacity: 0.3;
+}
+.news-thumb-gradient {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+  background: linear-gradient(to top, rgba(15,31,61,0.6), transparent);
+}
+.news-cat {
+  position: absolute; top: 12px; left: 12px;
+}
+.news-body { padding: 20px; }
+.news-date { font-size: 11px; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
+.news-card h3 { font-size: 15.5px; font-weight: 600; color: var(--navy); line-height: 1.45; margin-bottom: 10px; }
+.news-card p { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+.news-read { font-size: 13px; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 5px; }
+.news-card:hover .news-read { gap: 9px; }
+
+/* ═══════════════════════════════════════
+   PARTNERS STRIP
+═══════════════════════════════════════ */
+.partners { padding: 52px 0; background: #fff; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.partners-label { text-align: center; font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0.10em; text-transform: uppercase; margin-bottom: 28px; }
+.partners-row {
+  display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
+}
+.partner-logo {
+  padding: 10px 22px; border-radius: var(--radius-md);
+  border: 1px solid var(--border); font-size: 13px; font-weight: 700;
+  color: var(--muted); letter-spacing: 0.02em; transition: all 0.2s;
+  white-space: nowrap;
+}
+.partner-logo:hover { border-color: var(--navy); color: var(--navy); background: var(--off-white); }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+.site-footer {
+  background: var(--navy); padding: 70px 0 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 280px 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 52px;
+}
+.footer-brand {}
+.footer-logo {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+}
+.footer-logo-icon {
+  width: 38px; height: 38px; border-radius: 8px;
+  background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 15px; color: #fff; font-weight: 700;
+}
+.footer-logo-text { font-size: 14px; font-weight: 600; color: #fff; line-height: 1.3; }
+.footer-logo-text small { display: block; font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 400; }
+.footer-brand p { font-size: 13.5px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 20px; }
+.footer-contact { display: flex; flex-direction: column; gap: 8px; }
+.footer-contact a { font-size: 13px; color: rgba(255,255,255,0.50); display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+.footer-contact a:hover { color: #fff; }
+
+.footer-col h4 { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.40); letter-spacing: 0.10em; text-transform: uppercase; margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.footer-col ul a { font-size: 13.5px; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+.footer-col ul a:hover { color: #fff; }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 0; display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.30); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.70); }
+.footer-social { display: flex; gap: 8px; }
+.footer-social a {
+  width: 32px; height: 32px; border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: rgba(255,255,255,0.50); transition: all 0.2s;
+}
+.footer-social a:hover { background: var(--blue); color: #fff; }
+
+/* ═══════════════════════════════════════
+   WHATSAPP FAB
+═══════════════════════════════════════ */
+.whatsapp-fab {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.40);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.2s; border: none;
+  font-size: 24px; text-decoration: none;
+}
+.whatsapp-fab:hover { transform: scale(1.10); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+
+/* ═══════════════════════════════════════
+   SEARCH OVERLAY
+═══════════════════════════════════════ */
+.search-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(10,20,40,0.90); backdrop-filter: blur(8px);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 15vh;
+  opacity: 0; visibility: hidden; transition: all 0.25s ease;
+}
+.search-overlay.open { opacity: 1; visibility: visible; }
+.search-box { width: 600px; max-width: 90vw; }
+.search-box input {
+  width: 100%; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.20); border-radius: var(--radius-lg);
+  padding: 18px 24px; font-size: 18px; color: #fff; font-family: var(--font-body);
+  outline: none;
+}
+.search-box input::placeholder { color: rgba(255,255,255,0.35); }
+.search-hint { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 12px; text-align: center; }
+
+/* ═══════════════════════════════════════
+   ANNOUNCE BANNER
+═══════════════════════════════════════ */
+.announce-banner {
+  background: linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 100%);
+  padding: 10px 0; text-align: center;
+  font-size: 13px; font-weight: 500; color: #fff;
+}
+.announce-banner a { text-decoration: underline; text-underline-offset: 2px; color: #fff; }
+.announce-close {
+  position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: rgba(255,255,255,0.70); cursor: pointer; font-size: 18px;
+}
+.announce-wrap { position: relative; display: inline-block; width: 100%; text-align: center; }
+
+/* ═══════════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════════ */
+.fade-up { opacity: 0; transform: translateY(24px); transition: all 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up-delay-1 { transition-delay: 0.1s; }
+.fade-up-delay-2 { transition-delay: 0.2s; }
+.fade-up-delay-3 { transition-delay: 0.3s; }
+.fade-up-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; gap: 40px; }
+  .hero-card { max-width: 480px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .docs-grid { grid-template-columns: 1fr; }
+  .value-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 768px) {
+  .metrics-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .metric-item { border-right: none; padding: 12px; border-bottom: 1px solid var(--border); }
+  .news-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .docs-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .main-nav { display: none; }
+  .container { padding: 0 20px; }
+  .hero h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE BANNER -->
+<div class="announce-banner" id="announceBanner">
+  <div class="announce-wrap">
+    🎉 Laporan Keuangan Triwulanan Q1 2026 telah tersedia — <a href="#transparency">Unduh Sekarang</a>
+    <button class="announce-close" onclick="document.getElementById('announceBanner').style.display='none'">×</button>
+  </div>
+</div>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-contacts">
+      <span>📞 (0361) 224087 / 221798</span>
+      <span>✉️ info@jamkridabali.co.id</span>
+      <span>🕐 Senin–Jumat, 08.00–17.00 WITA</span>
+    </div>
+    <div class="utility-right">
+      <div class="lang-toggle">
+        <button class="active">ID</button>
+        <button onclick="alert('Versi Bahasa Inggris segera hadir')">EN</button>
+      </div>
+      <a href="https://ppid.jamkridabali.co.id" target="_blank" style="font-weight:600; color: #93C5FD;">PPID</a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/jamkridabali" target="_blank" title="Facebook">f</a>
+        <a href="https://www.instagram.com/jamkridabali" target="_blank" title="Instagram">ig</a>
+        <a href="https://twitter.com/jamkridajbm" target="_blank" title="Twitter">tw</a>
+        <a href="https://www.youtube.com/@jamkridabali5737" target="_blank" title="YouTube">yt</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <nav class="nav-inner">
+      <div class="logo-wrap">
+        <div class="logo-icon">JBM</div>
+        <div class="logo-text">
+          <div class="name">PT Jamkrida Bali Mandara</div>
+          <div class="tagline">The SME's Solution · Perseroda</div>
+        </div>
+      </div>
+
+      <div class="main-nav">
+        <div class="nav-item">
+          <div class="nav-link">Tentang JBM <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div>
+          <div class="dropdown">
+            <div class="dropdown-group">
+              <div class="dropdown-group-label">Profil</div>
+              <a href="#">Sejarah Perusahaan</a>
+              <a href="#">Visi & Misi</a>
+              <a href="#">Makna Logo</a>
+              <a href="#">Pemegang Saham</a>
+            </div>
+            <div class="dropdown-group">
+              <div class="dropdown-group-label">Tata Kelola</div>
+              <a href="#">Direksi & Komisaris</a>
+              <a href="#">Struktur Organisasi</a>
+              <a href="#">Komite Perusahaan</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">Produk & Layanan <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div>
+          <div class="dropdown" style="min-width:260px">
+            <a href="#">KUR Mikro</a>
+            <a href="#">KUR Kecil</a>
+            <a href="#">KUR Menengah</a>
+            <div class="dropdown-group">
+              <div class="dropdown-group-label">Non-KUR</div>
+              <a href="#">Kredit Modal Kerja</a>
+              <a href="#">Kredit Investasi</a>
+              <a href="#">Surety Bond</a>
+              <a href="#">Kontra Bank Garansi</a>
+            </div>
+            <div class="dropdown-group">
+              <div class="dropdown-group-label">Tools</div>
+              <a href="#calculator" onclick="document.querySelector('#calculator').scrollIntoView({behavior:'smooth'})">🧮 Kalkulator Simulasi</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#transparency">Keterbukaan Info</a>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">Media <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div>
+          <div class="dropdown">
+            <a href="#">Berita Terkini</a>
+            <a href="#">Siaran Pers</a>
+            <a href="#">Galeri Foto</a>
+            <a href="#">Video</a>
+            <a href="#">Materi Sosialisasi</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">Mitra & Agen <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg></div>
+          <div class="dropdown">
+            <a href="#">Daftar Bank Mitra</a>
+            <a href="#">Daftar Agen</a>
+            <a href="#" style="color: var(--blue); font-weight: 600;">🔐 Portal Mitra (Login)</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="#">Hubungi Kami</a>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button class="search-btn" onclick="document.getElementById('searchOverlay').classList.add('open')" title="Cari">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+        <a href="https://wa.me/6236100000" target="_blank" class="btn btn-outline" style="padding: 9px 16px; font-size: 13px;">Hubungi Kami</a>
+        <a href="#calculator" class="btn btn-primary" style="padding: 9px 18px; font-size: 13px;" onclick="document.querySelector('#calculator').scrollIntoView({behavior:'smooth'});event.preventDefault()">Ajukan Penjaminan</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" onclick="this.classList.remove('open')">
+  <div class="search-box" onclick="event.stopPropagation()">
+    <input type="text" placeholder="Cari produk, layanan, berita, dokumen..." autofocus id="searchInput">
+    <div class="search-hint">Tekan ESC untuk menutup · Cari berdasarkan nama produk atau kata kunci</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Satu-satunya Perusahaan Penjaminan Regional Bali
+      </div>
+      <h1>
+        Penjaminan Kredit<br>Terpercaya untuk<br><em>UMKM Bali</em>
+      </h1>
+      <p>
+        PT Jamkrida Bali Mandara hadir untuk memperkuat akses UMKM Bali terhadap pembiayaan perbankan melalui layanan penjaminan kredit yang profesional, cepat, dan transparan.
+      </p>
+      <div class="hero-cta">
+        <a href="#products" class="btn btn-primary" onclick="document.querySelector('#products').scrollIntoView({behavior:'smooth'});event.preventDefault()">
+          Lihat Produk Kami
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#calculator" class="btn btn-ghost-white" onclick="document.querySelector('#calculator').scrollIntoView({behavior:'smooth'});event.preventDefault()">
+          🧮 Simulasi Premi Gratis
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">Rp 2,4<span>T</span></div>
+          <div class="lbl">Total IJP Tersalurkan</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">12<span>K+</span></div>
+          <div class="lbl">Debitur Terjamin</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">24<span>+</span></div>
+          <div class="lbl">Bank Mitra</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">15<span>th</span></div>
+          <div class="lbl">Melayani Bali</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KALKULATOR MINI -->
+    <div class="hero-card" id="calculator">
+      <div class="hero-card-title">🧮 Simulasi Premi Penjaminan</div>
+      <div class="calc-label">Jenis Penjaminan</div>
+      <select class="calc-select" id="jenisProd">
+        <option value="kur-mikro">KUR Mikro (≤ Rp 100 Juta)</option>
+        <option value="kur-kecil">KUR Kecil (Rp 100–500 Juta)</option>
+        <option value="kur-menengah">KUR Menengah (> Rp 500 Juta)</option>
+        <option value="non-kur">Non-KUR / Kredit Komersial</option>
+        <option value="surety">Surety Bond</option>
+      </select>
+      <div class="calc-row">
+        <div>
+          <div class="calc-label">Plafon Kredit (Rp Juta)</div>
+          <input class="calc-input" type="number" id="plafon" value="100" min="1" max="50000" onchange="hitungPremi()">
+        </div>
+        <div>
+          <div class="calc-label">Jangka Waktu (Bulan)</div>
+          <input class="calc-input" type="number" id="tenor" value="36" min="1" max="360" onchange="hitungPremi()">
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="result-label">Estimasi Premi per Tahun</div>
+        <div class="result-value" id="hasilPremi">Rp 1.600.000</div>
+        <div class="result-sub" id="hasilPersen">Setara 1.60% dari plafon kredit</div>
+      </div>
+      <div class="calc-result" style="background: rgba(11,138,94,0.15); border-color: rgba(11,138,94,0.30); margin-top: 8px;">
+        <div class="result-label" style="color: #6EE7B7;">Total Premi Selama Tenor</div>
+        <div class="result-value" id="hasilTotal">Rp 4.800.000</div>
+        <div class="result-sub" id="hasilTenor">Untuk tenor 36 bulan</div>
+      </div>
+      <button class="calc-btn" onclick="alert('Fitur pengajuan online segera hadir! Sementara hubungi kami di (0361) 224087')">
+        Ajukan Penjaminan Sekarang →
+      </button>
+      <div class="calc-note">*Estimasi indikatif. Premi final ditentukan berdasarkan analisis risiko oleh tim JBM</div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS STRIP -->
+<div class="metrics-strip">
+  <div class="container">
+    <div class="metrics-inner">
+      <div class="metric-item fade-up">
+        <div class="metric-num">Rp 2,4<sup>T</sup></div>
+        <div class="metric-lbl">Total IJP Tersalurkan 2025</div>
+        <div class="metric-sub">▲ 18% vs tahun lalu</div>
+      </div>
+      <div class="metric-item fade-up fade-up-delay-1">
+        <div class="metric-num">12.500<sup>+</sup></div>
+        <div class="metric-lbl">Debitur Terjamin Aktif</div>
+        <div class="metric-sub">Per Q1 2026</div>
+      </div>
+      <div class="metric-item fade-up fade-up-delay-2">
+        <div class="metric-num">98,2<sup>%</sup></div>
+        <div class="metric-lbl">Tingkat Pembayaran Klaim</div>
+        <div class="metric-sub">Claim Settlement Ratio</div>
+      </div>
+      <div class="metric-item fade-up fade-up-delay-3">
+        <div class="metric-num">24<sup>+</sup></div>
+        <div class="metric-lbl">Bank & Lembaga Mitra</div>
+        <div class="metric-sub">Seluruh wilayah Bali</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-header-row fade-up">
+      <div class="section-header">
+        <div class="section-label">Produk & Layanan</div>
+        <h2>Solusi Penjaminan<br>Sesuai Kebutuhan Anda</h2>
+        <p>Dari UMKM mikro hingga proyek infrastruktur — kami memiliki skema penjaminan yang tepat untuk setiap kebutuhan bisnis di Bali.</p>
+      </div>
+      <a href="#" class="btn btn-outline" style="flex-shrink:0">Lihat Semua Produk →</a>
+    </div>
+
+    <div class="products-grid">
+      <div class="product-card fade-up">
+        <div class="product-icon" style="background:#DBEAFE;">💼</div>
+        <span class="tag tag-blue">KUR</span>
+        <h3>KUR Mikro</h3>
+        <p>Penjaminan kredit usaha rakyat untuk UMKM dengan plafon hingga Rp 100 juta. Proses cepat, syarat mudah, tanpa agunan tambahan.</p>
+        <div class="product-link">
+          Pelajari Lebih Lanjut
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="product-card fade-up fade-up-delay-1">
+        <div class="product-icon" style="background:#D1FAE5;">🏪</div>
+        <span class="tag tag-teal">KUR</span>
+        <h3>KUR Kecil</h3>
+        <p>Untuk usaha kecil yang membutuhkan modal pengembangan dengan plafon Rp 100 juta hingga Rp 500 juta. Tenor fleksibel hingga 60 bulan.</p>
+        <div class="product-link">
+          Pelajari Lebih Lanjut
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="product-card product-highlight fade-up fade-up-delay-2">
+        <div class="product-icon" style="background:rgba(200,168,75,0.20);">🏗️</div>
+        <span class="tag tag-gold">Unggulan</span>
+        <h3>Surety Bond</h3>
+        <p>Jaminan penyelesaian proyek untuk kontraktor dan penyedia jasa. Cocok untuk tender proyek pemerintah dan swasta di seluruh Bali.</p>
+        <div class="product-link">
+          Pelajari Lebih Lanjut
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-icon" style="background:#FEF3C7;">🏭</div>
+        <span class="tag tag-amber">Non-KUR</span>
+        <h3>Kredit Modal Kerja</h3>
+        <p>Penjaminan untuk kredit modal kerja non-KUR bagi usaha menengah. Plafon fleksibel sesuai kebutuhan bisnis Anda.</p>
+        <div class="product-link">
+          Pelajari Lebih Lanjut
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="product-card fade-up fade-up-delay-1">
+        <div class="product-icon" style="background:#EDE9FE;">🏦</div>
+        <span class="tag tag-blue">Non-KUR</span>
+        <h3>Kontra Bank Garansi</h3>
+        <p>Layanan kontra garansi untuk mendukung nasabah yang membutuhkan bank garansi dari lembaga keuangan mitra JBM.</p>
+        <div class="product-link">
+          Pelajari Lebih Lanjut
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="product-card fade-up fade-up-delay-2" style="border: 1.5px dashed var(--border); background: var(--off-white); cursor: default;">
+        <div class="product-icon" style="background:#F3F4F6;">🔜</div>
+        <span class="tag tag-amber">Segera Hadir</span>
+        <h3>Portal Pengajuan Online</h3>
+        <p>Ajukan penjaminan, upload dokumen, dan pantau status langsung dari browser Anda — tanpa perlu datang ke kantor.</p>
+        <div class="product-link" style="color: var(--muted);">
+          Dalam Pengembangan
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPOSITION -->
+<section class="value-prop">
+  <div class="container">
+    <div class="value-inner">
+      <div class="value-text fade-up">
+        <div class="section-label">Mengapa JBM?</div>
+        <h2>Memahami UMKM Bali,<br>Dari dalam ke Luar</h2>
+        <p>Sebagai satu-satunya perusahaan penjaminan yang lahir dan berfokus di Bali, kami memahami karakteristik bisnis, tantangan, dan potensi UMKM Bali lebih baik dari siapapun.</p>
+        <div class="value-features">
+          <div class="value-feature">
+            <div class="feature-icon blue">🏝️</div>
+            <div class="feature-text">
+              <h4>Fokus Regional Bali</h4>
+              <p>Didukung penuh Pemerintah Provinsi Bali. Kami memahami ekosistem bisnis dan regulasi daerah secara mendalam.</p>
+            </div>
+          </div>
+          <div class="value-feature">
+            <div class="feature-icon teal">⚡</div>
+            <div class="feature-text">
+              <h4>Proses Cepat & Efisien</h4>
+              <p>Pengajuan terintegrasi dengan sistem bank mitra. Keputusan penjaminan dalam 3–5 hari kerja.</p>
+            </div>
+          </div>
+          <div class="value-feature">
+            <div class="feature-icon amber">🔍</div>
+            <div class="feature-text">
+              <h4>Transparan & Akuntabel</h4>
+              <p>Seluruh laporan keuangan dan informasi perusahaan tersedia publik melalui PPID resmi kami.</p>
+            </div>
+          </div>
+          <div class="value-feature">
+            <div class="feature-icon navy">🤝</div>
+            <div class="feature-text">
+              <h4>24+ Bank & Mitra Terpercaya</h4>
+              <p>Jaringan kemitraan dengan bank nasional dan BPR/BPRS di seluruh kabupaten/kota Bali.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="value-visual fade-up fade-up-delay-2">
+        <div class="value-map">
+          <div class="map-grid"></div>
+          <div class="map-title">Jangkauan Layanan — Bali</div>
+          <div class="coverage-stat">
+            <div class="coverage-dot" style="background:#60A5FA"></div>
+            <div class="coverage-info">
+              <div class="region">Denpasar & Badung</div>
+              <div class="count">4.820 debitur aktif</div>
+            </div>
+            <div class="coverage-bar-wrap">
+              <div class="coverage-bar"><div class="coverage-bar-fill" style="width:85%; background:#60A5FA"></div></div>
+            </div>
+          </div>
+          <div class="coverage-stat">
+            <div class="coverage-dot" style="background:#34D399"></div>
+            <div class="coverage-info">
+              <div class="region">Gianyar & Klungkung</div>
+              <div class="count">2.340 debitur aktif</div>
+            </div>
+            <div class="coverage-bar-wrap">
+              <div class="coverage-bar"><div class="coverage-bar-fill" style="width:55%; background:#34D399"></div></div>
+            </div>
+          </div>
+          <div class="coverage-stat">
+            <div class="coverage-dot" style="background:#FBBF24"></div>
+            <div class="coverage-info">
+              <div class="region">Tabanan & Jembrana</div>
+              <div class="count">1.960 debitur aktif</div>
+            </div>
+            <div class="coverage-bar-wrap">
+              <div class="coverage-bar"><div class="coverage-bar-fill" style="width:45%; background:#FBBF24"></div></div>
+            </div>
+          </div>
+          <div class="coverage-stat">
+            <div class="coverage-dot" style="background:#F87171"></div>
+            <div class="coverage-info">
+              <div class="region">Buleleng, Bangli & Karangasem</div>
+              <div class="count">3.380 debitur aktif</div>
+            </div>
+            <div class="coverage-bar-wrap">
+              <div class="coverage-bar"><div class="coverage-bar-fill" style="width:65%; background:#F87171"></div></div>
+            </div>
+          </div>
+          <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; gap: 12px;">
+            <div style="flex:1; background: rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 700; color: #fff; font-family: var(--font-display);">9</div>
+              <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px;">Kab/Kota</div>
+            </div>
+            <div style="flex:1; background: rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 700; color: #fff; font-family: var(--font-display);">24+</div>
+              <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px;">Mitra Bank</div>
+            </div>
+            <div style="flex:1; background: rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; text-align: center;">
+              <div style="font-size: 20px; font-weight: 700; color: #fff; font-family: var(--font-display);">12K+</div>
+              <div style="font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px;">Debitur</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSPARENCY -->
+<section class="transparency" id="transparency">
+  <div class="container">
+    <div class="section-label fade-up">Keterbukaan Informasi Publik</div>
+    <h2 class="fade-up fade-up-delay-1">Transparan untuk<br>Semua Pemangku Kepentingan</h2>
+    <p class="fade-up fade-up-delay-2">Seluruh laporan keuangan, dokumen tata kelola, dan informasi publik tersedia secara terbuka sesuai amanat UU KIP dan regulasi OJK.</p>
+
+    <div class="transparency-tabs fade-up fade-up-delay-2">
+      <button class="trans-tab active" onclick="switchTab(this,'lk')">📊 Laporan Keuangan</button>
+      <button class="trans-tab" onclick="switchTab(this,'gcg')">⚖️ Tata Kelola (GCG)</button>
+      <button class="trans-tab" onclick="switchTab(this,'ppid')">📋 PPID & Pengadaan</button>
+    </div>
+
+    <div id="tab-lk" class="docs-grid fade-up">
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Laporan Keuangan Tahunan 2025 (Audited)</div>
+          <div class="doc-meta"><span>15 April 2026</span><span>3,2 MB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Laporan Keuangan Tahunan 2024 (Audited)</div>
+          <div class="doc-meta"><span>20 April 2025</span><span>2,8 MB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon xlsx">📊</div>
+        <div class="doc-info">
+          <div class="doc-name">Laporan Kinerja Triwulanan Q1 2026 (Jan–Mar)</div>
+          <div class="doc-meta"><span>30 April 2026</span><span>890 KB</span><span>PDF + XLSX</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Laporan Kinerja Triwulanan Q2 2026 (Jan–Jun)</div>
+          <div class="doc-meta"><span>Dijadwalkan 31 Juli 2026</span></div>
+        </div>
+        <span class="doc-status pending">Segera</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Laporan Kinerja Triwulanan Q4 2025 (Jan–Des)</div>
+          <div class="doc-meta"><span>28 Januari 2026</span><span>1,1 MB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Annual Report 2025 — PT Jamkrida Bali Mandara</div>
+          <div class="doc-meta"><span>30 Juni 2026</span><span>12,4 MB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+    </div>
+
+    <div id="tab-gcg" class="docs-grid" style="display:none">
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Laporan Pelaksanaan GCG 2025</div>
+          <div class="doc-meta"><span>30 Juni 2026</span><span>2,1 MB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Piagam Direksi & Dewan Komisaris</div>
+          <div class="doc-meta"><span>Januari 2025</span><span>450 KB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Kode Etik Perusahaan</div>
+          <div class="doc-meta"><span>Maret 2024</span><span>380 KB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Kebijakan Anti-Korupsi & Gratifikasi</div>
+          <div class="doc-meta"><span>Maret 2024</span><span>290 KB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+    </div>
+
+    <div id="tab-ppid" class="docs-grid" style="display:none">
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Daftar Informasi Publik (DIP) 2026</div>
+          <div class="doc-meta"><span>Januari 2026</span><span>520 KB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Laporan Pelayanan Informasi PPID 2025</div>
+          <div class="doc-meta"><span>Februari 2026</span><span>780 KB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Rencana Umum Pengadaan (RUP) 2026</div>
+          <div class="doc-meta"><span>Januari 2026</span><span>640 KB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+      <div class="doc-card" onclick="alert('Dokumen akan diunduh (fitur demo)')">
+        <div class="doc-icon pdf">📄</div>
+        <div class="doc-info">
+          <div class="doc-name">Standar Operasional Prosedur Layanan PPID</div>
+          <div class="doc-meta"><span>Agustus 2022</span><span>1,2 MB</span><span>PDF</span></div>
+        </div>
+        <span class="doc-status available">Tersedia</span>
+      </div>
+    </div>
+
+    <div class="trans-footer fade-up">
+      <span class="trans-note">Terakhir diperbarui: <strong>30 April 2026</strong> · Total dokumen publik: <strong>42 dokumen</strong></span>
+      <button class="ppid-btn" onclick="window.open('https://ppid.jamkridabali.co.id','_blank')">
+        Kunjungi Portal PPID Lengkap →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="container">
+    <div class="section-header-row fade-up">
+      <div class="section-header">
+        <div class="section-label">Media & Berita</div>
+        <h2>Terkini dari JBM</h2>
+      </div>
+      <a href="#" class="btn btn-outline" style="flex-shrink:0">Lihat Semua Berita →</a>
+    </div>
+    <div class="news-grid">
+      <div class="news-card fade-up">
+        <div class="news-thumb">
+          <div class="news-thumb-inner">🏆</div>
+          <div class="news-thumb-gradient"></div>
+          <div class="news-cat"><span class="tag tag-gold">Penghargaan</span></div>
+        </div>
+        <div class="news-body">
+          <div class="news-date">15 Mei 2026</div>
+          <h3>JBM Raih Predikat "Sangat Bagus" dalam Penilaian Kinerja BUMD Provinsi Bali 2025</h3>
+          <p>PT Jamkrida Bali Mandara berhasil meraih predikat terbaik dalam evaluasi kinerja perusahaan daerah...</p>
+          <div class="news-read">Baca Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="news-card fade-up fade-up-delay-1">
+        <div class="news-thumb" style="background: linear-gradient(135deg, #065F46, #0B8A5E)">
+          <div class="news-thumb-inner">🤝</div>
+          <div class="news-thumb-gradient"></div>
+          <div class="news-cat"><span class="tag tag-teal">Kemitraan</span></div>
+        </div>
+        <div class="news-body">
+          <div class="news-date">8 Mei 2026</div>
+          <h3>JBM Perluas Kemitraan dengan 3 BPR Baru di Kabupaten Buleleng dan Karangasem</h3>
+          <p>Perluasan jaringan mitra bertujuan meningkatkan akses penjaminan kredit bagi UMKM di Bali Utara...</p>
+          <div class="news-read">Baca Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+      <div class="news-card fade-up fade-up-delay-2">
+        <div class="news-thumb" style="background: linear-gradient(135deg, #1D4ED8, #1A5FDB)">
+          <div class="news-thumb-inner">📊</div>
+          <div class="news-thumb-gradient"></div>
+          <div class="news-cat"><span class="tag tag-blue">Kinerja</span></div>
+        </div>
+        <div class="news-body">
+          <div class="news-date">30 April 2026</div>
+          <h3>Laporan Keuangan Q1 2026: IJP Tersalurkan Tumbuh 21% dibanding Q1 2025</h3>
+          <p>Pada kuartal pertama 2026, total imbal jasa penjaminan yang tersalurkan mencapai Rp 612 miliar...</p>
+          <div class="news-read">Baca Selengkapnya <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners">
+  <div class="container">
+    <div class="partners-label">Dipercaya oleh Bank & Lembaga Keuangan Terkemuka</div>
+    <div class="partners-row">
+      <div class="partner-logo">BPD Bali</div>
+      <div class="partner-logo">Bank BRI</div>
+      <div class="partner-logo">Bank BNI</div>
+      <div class="partner-logo">Bank Mandiri</div>
+      <div class="partner-logo">Bank BCA</div>
+      <div class="partner-logo">Bank BSI</div>
+      <div class="partner-logo">Bank Jatim</div>
+      <div class="partner-logo">Bank BJB</div>
+      <div class="partner-logo">BTN</div>
+      <div class="partner-logo">+15 Mitra</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">JBM</div>
+          <div class="footer-logo-text">
+            PT Jamkrida Bali Mandara
+            <small>Perseroda — The SME's Solution</small>
+          </div>
+        </div>
+        <p>Perusahaan penjaminan daerah milik Pemerintah Provinsi Bali, berkomitmen mendukung pertumbuhan UMKM melalui layanan penjaminan kredit yang profesional dan transparan.</p>
+        <div class="footer-contact">
+          <a href="tel:036122408">📞 (0361) 224087 / 221798</a>
+          <a href="mailto:info@jamkridabali.co.id">✉️ info@jamkridabali.co.id</a>
+          <a>📍 Jl. Raya Puputan No. 1, Renon, Denpasar, Bali</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Tentang</h4>
+        <ul>
+          <li><a href="#">Sejarah Perusahaan</a></li>
+          <li><a href="#">Visi & Misi</a></li>
+          <li><a href="#">Direksi & Komisaris</a></li>
+          <li><a href="#">Struktur Organisasi</a></li>
+          <li><a href="#">Komite Perusahaan</a></li>
+          <li><a href="#">Izin Usaha</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Produk & Layanan</h4>
+        <ul>
+          <li><a href="#">KUR Mikro</a></li>
+          <li><a href="#">KUR Kecil</a></li>
+          <li><a href="#">KUR Menengah</a></li>
+          <li><a href="#">Surety Bond</a></li>
+          <li><a href="#">Kontra Bank Garansi</a></li>
+          <li><a href="#">Kalkulator Simulasi</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informasi</h4>
+        <ul>
+          <li><a href="#">Laporan Keuangan</a></li>
+          <li><a href="https://ppid.jamkridabali.co.id" target="_blank">Portal PPID</a></li>
+          <li><a href="#">Berita & Media</a></li>
+          <li><a href="#">Rekrutmen</a></li>
+          <li><a href="#">Pengadaan</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Hubungi Kami</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 PT Jamkrida Bali Mandara (Perseroda). Hak cipta dilindungi.</div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/jamkridabali" target="_blank" title="Facebook">f</a>
+        <a href="https://www.instagram.com/jamkridabali" target="_blank" title="Instagram">ig</a>
+        <a href="https://twitter.com/jamkridajbm" target="_blank" title="Twitter">tw</a>
+        <a href="https://www.youtube.com/@jamkridabali5737" target="_blank" title="YouTube">yt</a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Syarat & Ketentuan</a>
+        <a href="#">Peta Situs</a>
+        <a href="https://ppid.jamkridabali.co.id" target="_blank">PPID</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/6236122408" target="_blank" class="whatsapp-fab" title="Chat via WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// ── KALKULATOR PREMI ──────────────────────────────
+const RATES = {
+  'kur-mikro':    { rate: 0.016, label: 'KUR Mikro' },
+  'kur-kecil':    { rate: 0.014, label: 'KUR Kecil' },
+  'kur-menengah': { rate: 0.012, label: 'KUR Menengah' },
+  'non-kur':      { rate: 0.022, label: 'Non-KUR' },
+  'surety':       { rate: 0.030, label: 'Surety Bond' },
+};
+
+function formatRp(num) {
+  if (num >= 1e9) return 'Rp ' + (num / 1e9).toFixed(2).replace('.', ',') + ' M';
+  if (num >= 1e6) return 'Rp ' + (num / 1e6).toFixed(2).replace('.', ',') + ' Jt';
+  return 'Rp ' + num.toLocaleString('id-ID');
+}
+
+function hitungPremi() {
+  const jenis  = document.getElementById('jenisProd').value;
+  const plafon = parseFloat(document.getElementById('plafon').value) * 1e6 || 0;
+  const tenor  = parseInt(document.getElementById('tenor').value) || 12;
+  const r = RATES[jenis] || RATES['kur-mikro'];
+
+  const premiTahunan = plafon * r.rate;
+  const premiTotal   = premiTahunan * (tenor / 12);
+
+  document.getElementById('hasilPremi').textContent  = formatRp(Math.round(premiTahunan));
+  document.getElementById('hasilPersen').textContent = `Setara ${(r.rate * 100).toFixed(2)}% per tahun dari plafon kredit`;
+  document.getElementById('hasilTotal').textContent  = formatRp(Math.round(premiTotal));
+  document.getElementById('hasilTenor').textContent  = `Total selama ${tenor} bulan tenor`;
+}
+document.getElementById('jenisProd').onchange = hitungPremi;
+hitungPremi();
+
+// ── TAB TRANSPARENCY ──────────────────────────────
+function switchTab(btn, tabId) {
+  document.querySelectorAll('.trans-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['tab-lk','tab-gcg','tab-ppid'].forEach(id => {
+    document.getElementById(id).style.display = id === 'tab-' + tabId ? 'grid' : 'none';
+  });
+}
+
+// ── SEARCH ESC ──────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('searchOverlay').classList.remove('open');
+});
+
+// ── SCROLL ANIMATIONS ────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── STICKY HEADER SHADOW ──────────────────────────
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.site-header');
+  header.style.boxShadow = window.scrollY > 10
+    ? '0 4px 20px rgba(15,31,61,0.12)'
+    : '0 1px 4px rgba(15,31,61,0.06)';
+});
+
+// ── SMOOTH ANCHOR SCROLLS ─────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>
